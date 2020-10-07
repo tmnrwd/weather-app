@@ -8,7 +8,6 @@ import './App.css';
 
 let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-
 class WeatherCard extends React.Component {
     constructor(props) {
         super(props)
@@ -108,6 +107,7 @@ class WeatherCard extends React.Component {
                 maxTemp: 0,
                 windSpeed: 0,
                 cardID: 0,
+                iconURL: "",
                 error: null
             },
             dayTwo: {
@@ -119,6 +119,7 @@ class WeatherCard extends React.Component {
                 maxTemp: 0,
                 windSpeed: 0,
                 cardID: 0,
+                iconURL: "",
                 error: null
             },
             dayThree: {
@@ -130,6 +131,7 @@ class WeatherCard extends React.Component {
                 maxTemp: 0,
                 windSpeed: 0,
                 cardID: 0,
+                iconURL: "",
                 error: null
             },
             dayFour: {
@@ -141,6 +143,7 @@ class WeatherCard extends React.Component {
                 maxTemp: 0,
                 windSpeed: 0,
                 cardID: 0,
+                iconURL: "",
                 error: null
             },
             dayFive: {
@@ -152,6 +155,7 @@ class WeatherCard extends React.Component {
                 maxTemp: 0,
                 windSpeed: 0,
                 cardID: 0,
+                iconURL: "",
                 error: null
             }
         })
@@ -191,11 +195,12 @@ class WeatherCard extends React.Component {
                             day: dayOne,
                             date: dateNoTimeOneResult,
                             location: "Sheffield, UK",
-                            summary: result.list[0].weather.main,
-                            temp: result.list[0].main.temp,
-                            minTemp: result.list[0].main.temp_min,
-                            maxTemp: result.list[0].main.temp_max,
-                            windSpeed: result.list[0].wind.speed,
+                            summary: result.list[0].weather[0].main,
+                            temp: Math.round(result.list[0].main.temp),
+                            minTemp: Math.round(result.list[0].main.temp_min),
+                            maxTemp: Math.round(result.list[0].main.temp_max),
+                            windSpeed: Math.round(result.list[0].wind.speed),
+                            iconURL: `http://openweathermap.org/img/wn/${result.list[0].weather[0].icon}@2x.png`,
                             cardID: 0,
                             error: null
                         },
@@ -204,11 +209,12 @@ class WeatherCard extends React.Component {
                             day: dayTwo,
                             date: dateNoTimeTwoResult,
                             location: "Sheffield, UK",
-                            summary: result.list[8].weather.main,
-                            temp: result.list[8].main.temp,
-                            minTemp: result.list[8].main.temp_min,
-                            maxTemp: result.list[8].main.temp_max,
-                            windSpeed: result.list[8].wind.speed,
+                            summary: result.list[8].weather[0].main,
+                            temp: Math.round(result.list[8].main.temp),
+                            minTemp: Math.round(result.list[8].main.temp_min),
+                            maxTemp: Math.round(result.list[8].main.temp_max),
+                            windSpeed: Math.round(result.list[8].wind.speed),
+                            iconURL: `http://openweathermap.org/img/wn/${result.list[8].weather[0].icon}@2x.png`,
                             cardID: 1,
                             error: null
                         },
@@ -217,11 +223,12 @@ class WeatherCard extends React.Component {
                             day: dayThree,
                             date: dateNoTimeThreeResult,
                             location: "Sheffield, UK",
-                            summary: result.list[16].weather.main,
-                            temp: result.list[16].main.temp,
-                            minTemp: result.list[16].main.temp_min,
-                            maxTemp: result.list[16].main.temp_max,
-                            windSpeed: result.list[16].wind.speed,
+                            summary: result.list[16].weather[0].main,
+                            temp: Math.round(result.list[16].main.temp),
+                            minTemp: Math.round(result.list[16].main.temp_min),
+                            maxTemp: Math.round(result.list[16].main.temp_max),
+                            windSpeed: Math.round(result.list[16].wind.speed),
+                            iconURL: `http://openweathermap.org/img/wn/${result.list[16].weather[0].icon}@2x.png`,
                             cardID: 2,
                             error: null
                         },
@@ -230,11 +237,12 @@ class WeatherCard extends React.Component {
                             day: dayFour,
                             date: dateNoTimeFourResult,
                             location: "Sheffield, UK",
-                            summary: result.list[24].weather.main,
-                            temp: result.list[24].main.temp,
-                            minTemp: result.list[24].main.temp_min,
-                            maxTemp: result.list[24].main.temp_max,
-                            windSpeed: result.list[24].wind.speed,
+                            summary: result.list[24].weather[0].main,
+                            temp: Math.round(result.list[24].main.temp),
+                            minTemp: Math.round(result.list[24].main.temp_min),
+                            maxTemp: Math.round(result.list[24].main.temp_max),
+                            windSpeed: Math.round(result.list[24].wind.speed),
+                            iconURL: `http://openweathermap.org/img/wn/${result.list[24].weather[0].icon}@2x.png`,
                             cardID: 3,
                             error: null
                         },
@@ -243,11 +251,12 @@ class WeatherCard extends React.Component {
                             day: dayFive,
                             date: dateNoTimeFiveResult,
                             location: "Sheffield, UK",
-                            summary: result.list[32].weather.main,
-                            temp: result.list[32].main.temp,
-                            minTemp: result.list[32].main.temp_min,
-                            maxTemp: result.list[32].main.temp_max,
-                            windSpeed: result.list[32].wind.speed,
+                            summary: result.list[32].weather[0].main,
+                            temp: Math.round(result.list[32].main.temp),
+                            minTemp: Math.round(result.list[32].main.temp_min),
+                            maxTemp: Math.round(result.list[32].main.temp_max),
+                            windSpeed: Math.round(result.list[32].wind.speed),
+                            iconURL: `http://openweathermap.org/img/wn/${result.list[32].weather[0].icon}@2x.png`,
                             cardID: 4,
                             error: null
                         }
@@ -262,13 +271,14 @@ class WeatherCard extends React.Component {
                     });
                 }
             )
+            console.log(this.state.dayOne.iconURL)
     }
 
     render() {
         return (
             <>
             <Container fluid className="text-center">
-            <h1>Weather App</h1>
+            <h1>Forecasting the Weather</h1>
             <br></br>
             </Container>
             
@@ -278,6 +288,7 @@ class WeatherCard extends React.Component {
                             <Card style={{ width: '18rem' }}>
                                 <Card.Body>
                                     <Card.Title><h1>{this.state.dayOne.temp} °C</h1></Card.Title>
+                                    <img src={this.state.dayOne.iconURL} alt="A simple weather icon for this day's weather."/>
                                     <p>{this.state.dayOne.date}</p>
                                     <p>{this.state.dayOne.location}</p>
                                     <p>{this.state.dayOne.summary}</p>
@@ -290,6 +301,7 @@ class WeatherCard extends React.Component {
                             <Card style={{ width: '18rem' }}>
                                 <Card.Body>
                                     <Card.Title><h1>{this.state.dayTwo.temp} °C</h1></Card.Title>
+                                    <img src={this.state.dayTwo.iconURL}  alt="A simple weather icon for this day's weather."/>
                                     <p>{this.state.dayTwo.date}</p>
                                     <p>{this.state.dayTwo.location}</p>
                                     <p>{this.state.dayTwo.summary}</p>
@@ -302,6 +314,7 @@ class WeatherCard extends React.Component {
                             <Card style={{ width: '18rem' }}>
                                 <Card.Body>
                                     <Card.Title><h1>{this.state.dayThree.temp} °C</h1></Card.Title>
+                                    <img src={this.state.dayThree.iconURL}  alt="A simple weather icon for this day's weather."/>
                                     <p>{this.state.dayThree.date}</p>
                                     <p>{this.state.dayThree.location}</p>
                                     <p>{this.state.dayThree.summary}</p>
@@ -314,6 +327,7 @@ class WeatherCard extends React.Component {
                             <Card style={{ width: '18rem' }}>
                                 <Card.Body>
                                     <Card.Title><h1>{this.state.dayFour.temp} °C</h1></Card.Title>
+                                    <img src={this.state.dayFour.iconURL}  alt="A simple weather icon for this day's weather."/>
                                     <p>{this.state.dayFour.date}</p>
                                     <p>{this.state.dayFour.location}</p>
                                     <p>{this.state.dayFour.summary}</p>
@@ -326,6 +340,7 @@ class WeatherCard extends React.Component {
                             <Card style={{ width: '18rem' }}>
                                 <Card.Body>
                                     <Card.Title><h1>{this.state.dayFive.temp} °C</h1></Card.Title>
+                                    <img src={this.state.dayFive.iconURL}  alt="A simple weather icon for this day's weather."/>
                                     <p>{this.state.dayFive.date}</p>
                                     <p>{this.state.dayFive.location}</p>
                                     <p>{this.state.dayFive.summary}</p>
